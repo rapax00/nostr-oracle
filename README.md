@@ -1,8 +1,8 @@
-# Nostr Ticker
+# Nostr Oracle
 
 Send event to nostr with data of APIs. Easly access and don't disturbe to APIs multiples times.
 
-Simple mockup
+Simple mockup:
 
 <img src="https://image.nostr.build/796f078c2171da23362fae600a04a878c7608849d51a2ed21de139ddfffa4887.jpg">
 
