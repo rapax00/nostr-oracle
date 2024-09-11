@@ -1,15 +1,5 @@
-import * as dotenv from 'dotenv';
 import NDK, { NDKEvent } from '@nostr-dev-kit/ndk';
-
-dotenv.config();
-
-type UnsignedEvent = {
-    kind: number;
-    tags: [string, string][];
-    content: string;
-    created_at: number;
-    pubkey: string;
-};
+import { UnsignedEvent } from 'nostr-tools';
 
 async function makeEvent(
     dTagValue: string,
@@ -22,7 +12,7 @@ async function makeEvent(
         const unsignedEvent: UnsignedEvent = {
             kind: 30021,
             tags: [['d', dTagValue]],
-            content: content,
+            content,
             created_at: Math.round(Date.now() / 1000),
             pubkey,
         };
