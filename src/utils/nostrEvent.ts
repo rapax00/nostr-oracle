@@ -17,12 +17,14 @@ async function makeEvent(
     ndk: NDK
 ): Promise<NDKEvent> {
     try {
+        const pubkey = (await ndk.signer!.user()).pubkey;
+
         const unsignedEvent: UnsignedEvent = {
             kind: 30021,
             tags: [['d', dTagValue]],
             content: content,
             created_at: Math.round(Date.now() / 1000),
-            pubkey: process.env.NOSTR_PUBLIC_KEY!,
+            pubkey,
         };
 
         const ndkEvent: NDKEvent = new NDKEvent(ndk, unsignedEvent);
