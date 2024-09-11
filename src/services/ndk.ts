@@ -1,5 +1,8 @@
+import * as dotenv from 'dotenv';
 import NDK, { NDKPrivateKeySigner } from '@nostr-dev-kit/ndk';
 import { NDKClientInterface } from '../types/ndk';
+
+dotenv.config();
 
 const relaysUrls = [
     'wss://nostr-pub.wellorder.net',
