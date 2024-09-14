@@ -1,29 +1,27 @@
-import NDK, { NDKEvent } from '@nostr-dev-kit/ndk';
-import { UnsignedEvent } from 'nostr-tools';
+import { EventTemplate, finalizeEvent, NostrEvent } from 'nostr-tools';
 
 async function makeEvent(
     dTagValue: string,
     content: string,
-    ndk: NDK
-): Promise<NDKEvent> {
+    privateKey: Uint8Array
+): Promise<NostrEvent> {
     try {
-        const pubkey = (await ndk.signer!.user()).pubkey;
-
-        const unsignedEvent: UnsignedEvent = {
+        const unsignedEvent: EventTemplate = {
             kind: 30021,
             tags: [['d', dTagValue]],
-            content,
+            content: JSON.stringify(content),
             created_at: Math.round(Date.now() / 1000),
-            pubkey,
         };
 
-        const ndkEvent: NDKEvent = new NDKEvent(ndk, unsignedEvent);
+        const signedEvent: NostrEvent = finalizeEvent(
+            unsignedEvent,
+            privateKey
+        );
 
-        await ndkEvent.sign();
-
-        return ndkEvent;
+        return signedEvent;
     } catch (error) {
-        throw new Error('Error making event: ' + error);
+        console.log('Error in makeEvent.ts: ' + error);
+        throw error;
     }
 }
 
