@@ -1,5 +1,10 @@
 # Nostr Oracle
 
+<!-- ![Latest Release](https://badgen.net/github/release/rapax00/nostr-oracle/stable/?color=blue&icon=bitcoin-lightning) -->
+![License](https://badgen.net/github/license/rapax00/nostr-oracle/?color=cyan)
+![Stars](https://badgen.net/github/stars/rapax00/nostr-oracle/?color=yellow)
+![Forks](https://badgen.net/github/forks/rapax00/nostr-oracle/?color=grey)
+
 Send event to nostr with data of APIs. Easly access and don't disturbe to APIs multiples times.
 
 Simple mockup:
