@@ -9,7 +9,7 @@ async function makeNostrEvent(
         const unsignedEvent: EventTemplate = {
             kind: 30021,
             tags: [['d', dTagValue]],
-            content: JSON.stringify(content),
+            content,
             created_at: Math.round(Date.now() / 1000),
         };
 
